@@ -40,7 +40,13 @@ export class HomePage  implements OnInit  {
       this.pregunta =  this.preguntas[index];
       this.cuestionarioService.alerta(index);
       this.preguntas[index].acierto = this.cuestionarioService.getBoolean();
+      this.preguntas[index].intentos = this.cuestionarioService.getIntentos();
+      this.preguntas[index].respuestasIncorrectas.push(this.cuestionarioService.getRespuesta()) ;
     }
+  
+  actualizar(){
+
+  }
 
   Bidali(){
      return this.pregunta

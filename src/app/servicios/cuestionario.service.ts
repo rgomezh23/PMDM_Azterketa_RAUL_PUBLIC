@@ -28,6 +28,7 @@ export class CuestionarioService {
 
     respuestaEnviada :string = '';
     acertar: boolean = false;
+    intentoak : number = 5;
 
   
   // Gehitu beharrezkoak diren konponenteak eta zerbitzuak
@@ -62,6 +63,7 @@ export class CuestionarioService {
         text:'ENVIAR',
         handler: (data) => {
          this.respuestaEnviada  = data.respuesta;
+
           for(let i=0;i<this.preguntas.length;i++){
             console.log("Respuestas:" + this.preguntas[index].respuesta);
             console.log("Respuesta enviada:"+ this.respuestaEnviada)
@@ -72,7 +74,7 @@ export class CuestionarioService {
               }else{
                     this.preguntas[index].acierto = false;
                     this.acertar = false;
-                    this.preguntas[index].intentos++;
+                    this.intentoak--;
                     this.preguntas = [];
               }
               if(this.acertar){
@@ -114,6 +116,14 @@ export class CuestionarioService {
 
   getBoolean(){
     return this.acertar;
+  }
+
+  getIntentos(){
+    return this.intentoak;
+  }
+
+  getRespuesta(){
+    return this.respuestaEnviada;
   }
   
   // 2.1 Saiakera kopuruari kendu bat
